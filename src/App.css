@@ -111,6 +111,14 @@ h1 {
   color: #000;
 }
 
+.cell.hint,
+.cell.hint:disabled {
+  background: #d33;
+  color: #d33;
+  opacity: 1;
+  cursor: default;
+}
+
 .cell:disabled {
   cursor: default;
 }
@@ -122,13 +130,164 @@ h1 {
   margin: 0;
 }
 
+.secret-message {
+  max-width: min(640px, 100%);
+  padding: 12px 16px;
+  border: 2px solid #000;
+  background: #fff;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.4;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.secret-label {
+  font-weight: 700;
+}
+
+.secret-text {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.create-puzzle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  width: min(480px, 100%);
+}
+
+.create-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+
+.create-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.create-size {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+  font-variant-numeric: tabular-nums;
+}
+
+.generated-url {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #000;
+  background: #f8f8f8;
+  color: #000;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  word-break: break-all;
+  user-select: all;
+}
+
+.create-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-family: inherit;
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+  color: #000;
+  outline: none;
+}
+
+.create-input:focus {
+  background: #fafafa;
+}
+
 .controls {
   display: flex;
+  flex-direction: column;
   gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button-row{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .controls button {
   padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  background: #d9d9d9;
+  color: #000;
+  border-radius: 1dvh;
+  cursor: pointer;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+.controls button:hover {
+  background: #a3a3a3;
+  color: #fff;
+}
+
+.controls button:active {
+  transform: translateY(1px);
+}
+
+.controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #fff;
+  color: #000;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal {
+  background: #fff;
+  border: 2px solid #000;
+  padding: 24px 28px;
+  max-width: min(420px, calc(100% - 32px));
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+
+.modal-text {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.modal-actions button {
+  padding: 8px 22px;
   font-size: 15px;
   font-weight: 600;
   font-family: inherit;
@@ -140,11 +299,7 @@ h1 {
   transition: background-color 0.1s ease, color 0.1s ease;
 }
 
-.controls button:hover {
+.modal-actions button:hover {
   background: #000;
   color: #fff;
-}
-
-.controls button:active {
-  transform: translateY(1px);
 }
