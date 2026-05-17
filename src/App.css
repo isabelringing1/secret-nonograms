@@ -1,0 +1,150 @@
+.app {
+  max-width: 100%;
+  padding: 32px 16px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #000;
+}
+
+.nonogram {
+  --cell-size: 34px;
+  --clue-size: 28px;
+  display: inline-grid;
+  border: 2px solid #000;
+  background: #fff;
+  user-select: none;
+}
+
+.corner {
+  background: #fff;
+}
+
+.col-clue,
+.row-clue {
+  display: flex;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  font-variant-numeric: tabular-nums;
+}
+
+.col-clue {
+  align-items: flex-end;
+  justify-content: center;
+  padding: 4px 0;
+  border-left: 1px solid #cfcfcf;
+  border-bottom: 2px solid #000;
+}
+
+.row-clue {
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 6px;
+  border-top: 1px solid #cfcfcf;
+  border-right: 2px solid #000;
+}
+
+.col-clue.thick-left {
+  border-left: 2px solid #000;
+}
+.row-clue.thick-top {
+  border-top: 2px solid #000;
+}
+
+.clue-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  line-height: 1;
+}
+
+.clue-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: none;
+  border-left: 1px solid #cfcfcf;
+  border-top: 1px solid #cfcfcf;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  color: #d33;
+  line-height: 1;
+  transition: background-color 0.05s ease;
+}
+
+.cell:hover:not(:disabled):not(.filled) {
+  background: #f1f1f1;
+}
+
+.cell.thick-left {
+  border-left: 2px solid #000;
+}
+.cell.thick-top {
+  border-top: 2px solid #000;
+}
+
+.cell.filled {
+  background: #000;
+  color: #000;
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+.solved {
+  font-size: 22px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+.controls button {
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+.controls button:hover {
+  background: #000;
+  color: #fff;
+}
+
+.controls button:active {
+  transform: translateY(1px);
+}
