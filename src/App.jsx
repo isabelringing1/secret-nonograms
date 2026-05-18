@@ -41,12 +41,13 @@ function textToBinary(text) {
   return bits
 }
 
-const URL_BASE = '/secret-nonograms/'
+const URL_BASE = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`
 
 function decodePuzzleFromUrl() {
   if (typeof window === 'undefined') return null
-  const path = window.location.pathname
-  const raw = path.slice(path.lastIndexOf('/') + 1)
+  const raw = window.location.hash.replace(/^#/, '')
   if (!raw) return null
   let decoded
   try {
@@ -166,7 +167,7 @@ function App() {
     setCells(Array(size * size).fill(EMPTY))
     setHints(new Set())
     if (typeof window !== 'undefined') {
-      window.history.replaceState({}, '', URL_BASE)
+      window.history.replaceState({}, '', `${URL_BASE}${window.location.search}`)
     }
   }
 
@@ -222,7 +223,7 @@ function App() {
       const padded = buildPadded()
       if (!padded) return
       const encoded = btoa(padded)
-      setGeneratedUrl(`${window.location.origin}${URL_BASE}${encoded}`)
+      setGeneratedUrl(`${window.location.origin}${URL_BASE}#${encoded}`)
     }
 
     const playGenerated = () => {
@@ -233,7 +234,7 @@ function App() {
       setHints(new Set())
       setMode('puzzle')
       setGeneratedUrl(null)
-      window.history.replaceState({}, '', `${URL_BASE}${btoa(padded)}`)
+      window.history.replaceState({}, '', `${URL_BASE}#${btoa(padded)}`)
     }
 
     const copyLink = async () => {
